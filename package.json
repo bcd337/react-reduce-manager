@@ -40,7 +40,7 @@
     "api-types": "api-extractor run --local"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
