@@ -1,12 +1,12 @@
 {
-  "name": "use-reducer-manager",
+  "name": "react-use-reducer",
   "version": "1.0.0",
   "license": "MIT",
   "description": "Hook for React useReducer",
-  "repository": "github:bcd337/use-reducer-manager",
-  "homepage": "https://github.com/bcd337/use-reducer-manager",
+  "repository": "github:bcd337/react-use-reducer",
+  "homepage": "https://github.com/bcd337/react-use-reducer",
   "keywords": [
-    "use-reducer-manager",
+    "react-use-reducer",
     "useReducer"
   ],
   "author": "Muhamad Iqbal <muh.iqbal6600@gmail.com>",
@@ -33,8 +33,8 @@
     "test:typescript:extended": "tsc --noEmit -p typescript_test/typescript_extended/tsconfig.json",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src/*.ts --ignore src/types.ts --extensions .ts --out-dir lib ",
     "build:es": "babel src/*.ts --ignore src/types.ts --extensions .ts --out-dir es",
-    "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/use-reducer-manager.js",
-    "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/use-reducer-manager.min.js",
+    "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/react-use-reducer.js",
+    "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/react-use-reducer.min.js",
     "build:types": "tsc",
     "build": "rimraf dist lib es && npm run build:types && npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
     "api-types": "api-extractor run --local"
