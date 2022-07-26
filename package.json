@@ -1,6 +1,6 @@
 {
   "name": "react-reducer",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "Hook for React useReducer",
   "repository": "github:bcd337/react-reducer",
