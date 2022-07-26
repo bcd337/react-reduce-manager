@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useReducer as originalUseReducer } from 'react'
 import { createReducer } from './createReducer'
 
 type ActionCustomProp<T> = Record<string, (state: T, ...rest: any[]) => Partial<T> | Promise<Partial<T>>>
@@ -18,7 +18,7 @@ type Dispatch = ({ type, payload }: {
   payload?: unknown,
 }) => void
 
-type useReducerManagerReturn<T, C> = {
+type useReducerReturn<T, C> = {
   state: T,
   action: ActionCustom<C> & ActionType<T>
 }
@@ -84,8 +84,8 @@ function createActionCustom<T extends object, C extends ActionCustomProp<T>>(
     .reduce((prev, { key, value }) => ({ ...prev, [key]: value }), {} as ActionCustom<C>)
 }
 
-function useReducerManager<T extends object, C extends ActionCustomProp<T>>(initialValue: T, custom?: C): useReducerManagerReturn<T, C> {
-  const [ state, dispatch ] = useReducer(createReducer(initialValue, custom ? Object.keys(custom) : []), initialValue)
+function useReducer<T extends object, C extends ActionCustomProp<T>>(initialValue: T, custom?: C): useReducerReturn<T, C> {
+  const [ state, dispatch ] = originalUseReducer(createReducer(initialValue, custom ? Object.keys(custom) : []), initialValue)
 
   return {
     state,
@@ -93,7 +93,7 @@ function useReducerManager<T extends object, C extends ActionCustomProp<T>>(init
       ...createActionType(initialValue, dispatch as unknown as Dispatch),
       ...createActionCustom(dispatch as unknown as Dispatch, state, custom),
     }
-  } as useReducerManagerReturn<T, C>
+  } as useReducerReturn<T, C>
 }
 
-export default useReducerManager
+export default useReducer

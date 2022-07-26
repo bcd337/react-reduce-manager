@@ -1,3 +1,3 @@
-import useReducerManager from './useReducerManager'
+import useReducer from './useReducer'
 export * from './createReducer'
-export default useReducerManager
+export default useReducer
