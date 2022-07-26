@@ -5,3 +5,4 @@ lib
 dist
 es
 builds/
+package-lock.json
