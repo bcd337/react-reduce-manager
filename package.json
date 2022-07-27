@@ -1,12 +1,12 @@
 {
-  "name": "react-use-reducer",
+  "name": "react-reduce-manager",
   "version": "0.1.0",
   "license": "MIT",
   "description": "Hook for React useReducer",
-  "repository": "github:bcd337/react-use-reducer",
-  "homepage": "https://github.com/bcd337/react-use-reducer",
+  "repository": "github:bcd337/react-reduce-manager",
+  "homepage": "https://github.com/bcd337/react-reduce-manager",
   "keywords": [
-    "react-use-reducer",
+    "react-reduce-manager",
     "useReducer"
   ],
   "author": "Muhamad Iqbal",
@@ -77,8 +77,8 @@
       "__DEV__": true
     },
     "moduleNameMapper": {
-      "^react-use-reducer$": "<rootDir>/src/index.ts",
-      "^react-use-reducer/(.*)$": "<rootDir>/src/$1.ts"
+      "^react-reduce-manager$": "<rootDir>/src/index.ts",
+      "^react-reduce-manager/(.*)$": "<rootDir>/src/$1.ts"
     },
     "modulePathIgnorePatterns": [
       "dist"

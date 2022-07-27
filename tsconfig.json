@@ -9,8 +9,8 @@
     "exactOptionalPropertyTypes": true,
     "baseUrl": ".",
     "paths": {
-      "react-use-reducer": ["./src/index.ts"],
-      "react-use-reducer/*": ["./src/*.ts"]
+      "react-reduce-manager": ["./src/index.ts"],
+      "react-reduce-manager/*": ["./src/*.ts"]
     }
   },
   "include": ["src/**/*", "tests/**/*"],

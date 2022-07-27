@@ -61,7 +61,7 @@ function createESMConfig(input, output) {
     plugins: [
       alias({
         entries: {
-          './useReducer': 'react-use-reducer/useReducer',
+          './useReducer': 'react-reduce-manager/useReducer',
         },
       }),
       resolve({ extensions }),
@@ -85,7 +85,7 @@ function createCommonJSConfig(input, output) {
     plugins: [
       alias({
         entries: {
-          './useReducer': 'react-use-reducer/useReducer',
+          './useReducer': 'react-reduce-manager/useReducer',
         },
       }),
       resolve({ extensions }),
@@ -108,20 +108,20 @@ function createUMDConfig(input, output, env) {
       exports: 'named',
       name:
         c === 'index'
-          ? 'react-use-reducer'
-          : `react-use-reducer${c.slice(0, 1).toUpperCase()}${c.slice(1)}`,
+          ? 'react-reduce-manager'
+          : `react-reduce-manager${c.slice(0, 1).toUpperCase()}${c.slice(1)}`,
       globals: {
         react: 'React',
         'use-sync-external-store/shim/with-selector':
           'useSyncExternalStoreShimWithSelector',
-        'react-use-reducer/useReducer': 'react-use-reducerUseReducer',
+        'react-reduce-manager/useReducer': 'reactReduceManager',
       },
     },
     external,
     plugins: [
       alias({
         entries: {
-          './useReducer': 'react-use-reducer/useReducer',
+          './useReducer': 'react-reduce-manager/useReducer',
         },
       }),
       resolve({ extensions }),
@@ -147,7 +147,7 @@ function createSystemConfig(input, output, env) {
     plugins: [
       alias({
         entries: {
-          './useReducer': 'react-use-reducer/useReducer',
+          './useReducer': 'react-reduce-manager/useReducer',
         },
       }),
       resolve({ extensions }),
