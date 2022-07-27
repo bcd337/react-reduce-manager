@@ -1,7 +1,6 @@
 {
   "name": "react-use-reducer",
   "version": "1.0.0",
-  "private": true,
   "license": "MIT",
   "description": "Hook for React useReducer",
   "repository": "github:bcd337/react-use-reducer",
