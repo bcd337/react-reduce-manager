@@ -1,6 +1,6 @@
 {
   "name": "react-reduce-manager",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "description": "Hook for React useReducer",
   "repository": "github:bcd337/react-reduce-manager",
@@ -24,7 +24,7 @@
     }
   },
   "files": [
-    "**"
+    "dist**"
   ],
   "exports": {
     "./package.json": "./package.json",
