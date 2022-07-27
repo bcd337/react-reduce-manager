@@ -1,6 +1,6 @@
 {
   "name": "react-reduce-manager",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "MIT",
   "description": "Hook for React useReducer",
   "repository": "github:bcd337/react-reduce-manager",
@@ -10,11 +10,13 @@
     "useReducer"
   ],
   "author": "Muhamad Iqbal",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "prebuild": "shx rm -rf dist",
@@ -33,38 +35,6 @@
   },
   "engines": {
     "node": ">=12.7.0"
-  },
-  "jest": {
-    "rootDir": ".",
-    "testEnvironment": "jsdom",
-    "transform": {
-      "^.+\\.(t|j)sx?$": [
-        "@swc/jest"
-      ]
-    },
-    "globals": {
-      "__DEV__": true
-    },
-    "moduleNameMapper": {
-      "^react-reduce-manager$": "<rootDir>/src/index.ts",
-      "^react-reduce-manager/(.*)$": "<rootDir>/src/$1.ts"
-    },
-    "modulePathIgnorePatterns": [
-      "dist"
-    ],
-    "testRegex": "test.(js|ts|tsx)$",
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "coverageReporters": [
-      "json",
-      "html",
-      "text",
-      "text-summary"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.{js,ts,tsx}",
-      "tests/**/*.{js,ts,tsx}"
-    ]
   },
   "peerDependencies": {
     "react": ">=16.8.0"
