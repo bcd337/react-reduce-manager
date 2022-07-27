@@ -1,6 +1,6 @@
 {
   "name": "react-reduce-manager",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "description": "Hook for React useReducer",
   "repository": "github:bcd337/react-reduce-manager",
@@ -10,9 +10,9 @@
     "useReducer"
   ],
   "author": "Muhamad Iqbal",
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
   "sideEffects": false,
   "typesVersions": {
     "<4.0": {
@@ -25,7 +25,7 @@
     }
   },
   "files": [
-    "dist**"
+    "dist"
   ],
   "exports": {
     "./package.json": "./package.json",
