@@ -11,7 +11,7 @@
   ],
   "author": "Muhamad Iqbal",
   "main": "dist/index.js",
-  "module": "esm/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "typesVersions": {
