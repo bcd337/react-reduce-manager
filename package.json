@@ -1,6 +1,6 @@
 {
   "name": "react-reduce-manager",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "MIT",
   "description": "Hook for React useReducer",
   "repository": "github:bcd337/react-reduce-manager",
@@ -11,43 +11,11 @@
   ],
   "author": "Muhamad Iqbal",
   "main": "./dist/index.js",
-  "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
-  "typesVersions": {
-    "<4.0": {
-      "esm/*": [
-        "ts3.4/*"
-      ],
-      "*": [
-        "ts3.4/*"
-      ]
-    }
-  },
   "files": [
     "dist"
   ],
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "types": "./index.d.ts",
-      "module": "./esm/index.js",
-      "import": "./esm/index.mjs",
-      "default": "./index.js"
-    },
-    "./createReducer": {
-      "types": "./createReducer.d.ts",
-      "module": "./esm/createReducer.js",
-      "import": "./esm/createReducer.mjs",
-      "default": "./createReducer.js"
-    },
-    "./useReducer": {
-      "types": "./useReducer.d.ts",
-      "module": "./esm/useReducer.js",
-      "import": "./esm/useReducer.mjs",
-      "default": "./useReducer.js"
-    }
-  },
   "scripts": {
     "prebuild": "shx rm -rf dist",
     "build": "concurrently -m 8 'yarn:build:*'",
