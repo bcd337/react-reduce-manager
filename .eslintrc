@@ -13,6 +13,9 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": [
+      "./tsconfig.json"
+    ],
     "ecmaFeatures": {
       "impliedStrict": true
     },
