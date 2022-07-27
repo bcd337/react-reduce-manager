@@ -1,8 +1,8 @@
 type Action<T, C> = {
   [P in keyof C & string as number]: { type: C[P], payload: Partial<T> }
-} | { 
+} | {
   [P in keyof T & string as T[P] extends boolean ? `TOGGLE_${Uppercase<P>}` : never ]: { type: `TOGGLE_${Uppercase<P>}` }
-} | { 
+} | {
   [P in keyof T & string as `CHANGE_${Uppercase<P>}`]: { type: `CHANGE_${Uppercase<P>}`, payload: T[P] }
 }
 
@@ -37,7 +37,7 @@ function createActionReducer<T extends object>(initialValue: T): ActionReducer[]
             type: `TOGGLE_${key}`.toUpperCase(),
             key,
             toggle: true,
-          }
+          },
         ]
       }
 
@@ -47,12 +47,15 @@ function createActionReducer<T extends object>(initialValue: T): ActionReducer[]
           type: `CHANGE_${key}`.toUpperCase(),
           key,
           toggle: false,
-        }
+        },
       ]
     }, [])
 }
 
-export function createReducer<T extends object, C extends readonly string[]>(initialValue: T, customType?: C) {
+function createReducer<T extends object, C extends readonly string[]>(
+  initialValue: T,
+  customType?: C,
+) {
   const actionReducer = createActionReducer(initialValue)
 
   return (state: T, action: ToTemplateAction<Action<T, C>>) => {
@@ -80,9 +83,9 @@ export function createReducer<T extends object, C extends readonly string[]>(ini
     }
 
     if (find.toggle) {
-      return { 
+      return {
         ...state,
-        [find.key]: !state[find.key as keyof typeof state]
+        [find.key]: !state[find.key as keyof typeof state],
       }
     }
 
@@ -92,3 +95,5 @@ export function createReducer<T extends object, C extends readonly string[]>(ini
     }
   }
 }
+
+export default createReducer

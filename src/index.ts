@@ -1,3 +1,2 @@
-import useReducer from './useReducer'
-export * from './createReducer'
-export default useReducer
+export { default as createReducer } from './createReducer'
+export { default } from './useReducer'

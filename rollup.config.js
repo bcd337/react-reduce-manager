@@ -112,7 +112,6 @@ function createUMDConfig(input, output, env) {
           : `react-use-reducer${c.slice(0, 1).toUpperCase()}${c.slice(1)}`,
       globals: {
         react: 'React',
-        // FIXME not yet supported
         'use-sync-external-store/shim/with-selector':
           'useSyncExternalStoreShimWithSelector',
         'react-use-reducer/useReducer': 'react-use-reducerUseReducer',

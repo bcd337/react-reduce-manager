@@ -1,15 +1,17 @@
 import { useReducer as originalUseReducer } from 'react'
-import { createReducer } from './createReducer'
+import createReducer from './createReducer'
 
-type ActionCustomProp<T> = Record<string, (state: T, ...rest: any[]) => Partial<T> | Promise<Partial<T>>>
+type ActionCustomProp<T> =
+  Record<string, (state: T, ...rest: any[]) => Partial<T> | Promise<Partial<T>>>
 
 type ActionCustom<T> = {
-  +readonly [P in keyof T & string]: T[P] extends (x: any, ...args: infer A) => infer R ? (...args: A) => R : never
+  +readonly [P in keyof T & string]: T[P] extends (x: any, ...args: infer A) => infer R ?
+    (...args: A) => R : never
 }
 
-type ActionType<T> = { 
+type ActionType<T> = {
   +readonly [P in keyof T & string as `set${Capitalize<P>}`]: (param: T[P]) => void
-} & { 
+} & {
   +readonly [P in keyof T & string as T[P] extends boolean ? `toggle${Capitalize<P>}` : never ]: () => void
 }
 
@@ -18,7 +20,7 @@ type Dispatch = ({ type, payload }: {
   payload?: unknown,
 }) => void
 
-type useReducerReturn<T, C> = {
+type UseReducer<T, C> = {
   state: T,
   action: ActionCustom<C> & ActionType<T>
 }
@@ -55,49 +57,51 @@ function createActionType<T extends object>(
 }
 
 function createActionCustom<T extends object, C extends ActionCustomProp<T>>(
-  dispatch: Dispatch, 
+  dispatch: Dispatch,
   state: T,
   custom?: C,
 ): ActionCustom<C> {
   return Object
     .entries(custom || {})
-    .map(([key, value]) => {
-      return {
-        key,
-        value: (...rest: any[]) => {
-          return new Promise((resolve, reject) => {
-            const result = value(state, ...rest)
-            
-            if (result instanceof Promise) {
-              return result.then((payload) => {
-                resolve(dispatch({
-                  type: key,
-                  payload: payload
-                }))
-              }).catch((error) => reject(error))
-            }
-  
+    .map(([key, value]) => ({
+      key,
+      value: (...rest: any[]) => new Promise((resolve, reject) => {
+        const result = value(state, ...rest)
+
+        if (result instanceof Promise) {
+          result.then((payload) => {
             resolve(dispatch({
               type: key,
-              payload: result
+              payload,
             }))
-          })
-        },
-      }
-    })
+          }).catch((error) => reject(error))
+
+          return
+        }
+
+        resolve(dispatch({
+          type: key,
+          payload: result,
+        }))
+      }),
+    }))
     .reduce((prev, { key, value }) => ({ ...prev, [key]: value }), {} as ActionCustom<C>)
 }
 
-function useReducer<T extends object, C extends ActionCustomProp<T>>(initialValue: T, custom?: C): useReducerReturn<T, C> {
-  const [ state, dispatch ] = originalUseReducer(createReducer(initialValue, custom ? Object.keys(custom) : []), initialValue)
+function useReducer<T extends object, C extends ActionCustomProp<T>>(
+  initialValue: T,
+  custom?: C,
+): UseReducer<T, C> {
+  const reducer = createReducer(initialValue, custom ? Object.keys(custom) : [])
+  const [state, dispatch] = originalUseReducer(reducer, initialValue)
 
   return {
     state,
     action: {
       ...createActionType(initialValue, dispatch as unknown as Dispatch),
       ...createActionCustom(dispatch as unknown as Dispatch, state, custom),
-    }
-  } as useReducerReturn<T, C>
+    },
+  } as UseReducer<T, C>
 }
 
 export default useReducer
