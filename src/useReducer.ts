@@ -64,19 +64,23 @@ function createActionCustom<T extends object, C extends ActionCustomProp<T>>(
     .map(([key, value]) => {
       return {
         key,
-        value: async (...rest: any[]) => {
-          if (value.constructor.name === 'Function') {
-            return dispatch({
+        value: (...rest: any[]) => {
+          return new Promise((resolve, reject) => {
+            const result = value(state, ...rest)
+            
+            if (result instanceof Promise) {
+              return result.then((payload) => {
+                resolve(dispatch({
+                  type: key,
+                  payload: payload
+                }))
+              }).catch((error) => reject(error))
+            }
+  
+            resolve(dispatch({
               type: key,
-              payload: value(state, ...rest)
-            })
-          }
-
-          const call = await value(state, ...rest)
-
-          return dispatch({
-            type: key,
-            payload: call
+              payload: result
+            }))
           })
         },
       }
