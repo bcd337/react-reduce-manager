@@ -10,8 +10,9 @@
     "useReducer"
   ],
   "author": "Muhamad Iqbal",
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "main": "dist/index.js",
+  "module": "esm/index.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "typesVersions": {
     "<4.0": {
