@@ -5,3 +5,5 @@ coverage
 dist
 package-lock.json
 .vscode
+es
+lib

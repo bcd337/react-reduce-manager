@@ -53,9 +53,13 @@
     "linebreak-style": ["error", "unix"]
   },
   "ignorePatterns": [
+    "dist/*",
     "coverage/*",
     "rollup.config.js",
     "babel.config.js",
-    "jest.config.js"
+    "jest.config.js",
+    "test/*",
+    "es/*",
+    "lib/*"
   ]
 }

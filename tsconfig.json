@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
-    "target": "esnext",
     "strict": true,
-    "jsx": "react-jsx",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
-    "moduleResolution": "node",
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "baseUrl": ".",
-    "paths": {
-      "react-reduce-manager": ["./src/index.ts"],
-      "react-reduce-manager/*": ["./src/*.ts"]
-    }
+    "skipLibCheck": true,
+    "allowJs": true,
+    "jsx": "react",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./es",
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "rootDirs": ["./src"]
   },
-  "include": ["src/**/*", "tests/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
