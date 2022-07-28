@@ -1,28 +1,19 @@
-module.exports = (api, targets) => {
-  // https://babeljs.io/docs/en/config-files#config-function-api
-  const isTestEnv = api.env('test')
+const { NODE_ENV, BABEL_ENV } = process.env
+const cjs = NODE_ENV === 'test' || BABEL_ENV === 'commonjs'
 
-  return {
-    babelrc: false,
-    ignore: ['./node_modules'],
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          loose: true,
-          modules: isTestEnv ? 'commonjs' : false,
-          targets: isTestEnv ? { node: 'current' } : targets,
+module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          browsers: ">1%, not ie 11, not op_mini all, not dead"
         },
-      ],
+        loose: true,
+        modules: cjs ? 'cjs' : false
+      }
     ],
-    plugins: [
-      [
-        '@babel/plugin-transform-react-jsx',
-        {
-          runtime: 'automatic',
-        },
-      ],
-      ['@babel/plugin-transform-typescript', { isTSX: true }],
-    ],
-  }
+    '@babel/preset-typescript'
+  ],
+  plugins: [cjs && ['@babel/transform-modules-commonjs']].filter(Boolean)
 }
