@@ -13,7 +13,8 @@
     "outDir": "./es",
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "rootDirs": ["./src"]
+    "rootDirs": ["./src"],
+    "baseUrl": "./src"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
