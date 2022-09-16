@@ -1,19 +1,35 @@
-const { NODE_ENV, BABEL_ENV } = process.env
-const cjs = NODE_ENV === 'test' || BABEL_ENV === 'commonjs'
-
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/env",
       {
+        loose: false,
+        modules: false,
         targets: {
-          browsers: ">1%, not ie 11, not op_mini all, not dead"
-        },
-        loose: true,
-        modules: cjs ? 'cjs' : false
+          node: "current"
+        }
       }
     ],
-    '@babel/preset-typescript'
+    "@babel/preset-typescript"
   ],
-  plugins: [cjs && ['@babel/transform-modules-commonjs']].filter(Boolean)
+  plugins: [
+    [
+      "module-resolver",
+      {
+        extensions: [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ],
+        root: [
+          "./src"
+        ]
+      }
+    ]
+  ],
+  ignore: [
+    "*/**/types.ts",
+    "*/**/*.test.ts"
+  ]
 }

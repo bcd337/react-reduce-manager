@@ -2,11 +2,7 @@
   "root": true,
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "airbnb",
-    "airbnb/hooks",
-    "airbnb-typescript"
+    "plugin:@typescript-eslint/recommended"
   ],
   "env": {
     "node": true
@@ -59,7 +55,8 @@
     "babel.config.js",
     "jest.config.js",
     "test/*",
-    "es/*",
-    "lib/*"
+    ".babelrc",
+    "jest.config.ts",
+    "*/**/*.test.ts"
   ]
 }

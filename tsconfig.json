@@ -1,21 +1,31 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "target": "esnext",
     "skipLibCheck": true,
-    "allowJs": true,
-    "jsx": "react",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "./es",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "rootDirs": ["./src"],
-    "baseUrl": "./src"
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "allowJs": false,
+    "emitDeclarationOnly": true,
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "outDir": "./dist/type"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "files": ["./src/index.ts"],
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "*/**/*.test.*"
+  ]
 }

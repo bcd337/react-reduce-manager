@@ -1,4 +1,4 @@
-import useReducer from '../src/index'
+import useReducer from './index'
 
 describe('useReducer', () => {
   test('is useReducer exist', () => {
