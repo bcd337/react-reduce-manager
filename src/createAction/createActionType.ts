@@ -2,7 +2,7 @@ import type {
   ActionType,
   Dispatch,
 } from './types'
-import capitalize from './capitalize'
+import capitalize from 'helpers/capitalize'
 
 function createActionType<T extends object>(
   s: T,
